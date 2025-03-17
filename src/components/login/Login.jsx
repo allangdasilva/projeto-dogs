@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Login.module.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import { UserContext } from "../../UserContext";
 
@@ -13,7 +14,11 @@ const Login = () => {
   }, [login, navigate]);
   return (
     <>
-      <Outlet />
+      <section className={styles.login}>
+        <div className={styles.forms}>
+          <Outlet />
+        </div>
+      </section>
     </>
   );
 };
