@@ -9,7 +9,7 @@ import { UserContext } from "../../UserContext";
 const LoginForm = () => {
   const username = useForm();
   const password = useForm();
-  const { userLogin } = React.useContext(UserContext);
+  const { userLogin, error, loading } = React.useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -35,7 +35,13 @@ const LoginForm = () => {
             type={"password"}
             {...password}
           />
-          <Button>Entrar</Button>
+          {loading ? (
+            <Button disabled>Carregando</Button>
+          ) : (
+            <Button>Entrar</Button>
+          )}
+
+          {error && <p>{error}</p>}
         </form>
       </section>
       <Link to={"create"}>Cadastro</Link>

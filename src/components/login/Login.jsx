@@ -1,8 +1,17 @@
 import React from "react";
 import styles from "./Login.module.css";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 
 const Login = () => {
+  const { login } = React.useContext(UserContext);
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (login) {
+      navigate("/conta");
+    }
+  }, [login, navigate]);
   return (
     <>
       <Outlet />
