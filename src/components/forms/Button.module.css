@@ -1,4 +1,5 @@
 .button {
+  display: inline-block;
   min-width: 8rem;
   padding: 0.8rem 1.2rem;
   border: none;
