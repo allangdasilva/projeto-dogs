@@ -9,9 +9,12 @@ import LoginCreate from "./components/login/LoginCreate";
 import LoginPasswordLost from "./components/login/LoginPasswordLost";
 import LoginPasswordReset from "./components/login/LoginPasswordReset";
 import Account from "./components/user/Account";
+import Feed from "./components/feed/Feed";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserStorage } from "./UserContext";
 import ProtectedRoute from "./components/helper/ProtectedRoute";
+import UserPhotoPost from "./components/user/UserPhotoPost";
+import UserStats from "./components/user/UserStats";
 
 const App = () => {
   return (
@@ -34,7 +37,11 @@ const App = () => {
                   <Account />
                 </ProtectedRoute>
               }
-            ></Route>
+            >
+              <Route path="" element={<Feed />} />
+              <Route path="post" element={<UserPhotoPost />} />
+              <Route path="stats" element={<UserStats />} />
+            </Route>
           </Routes>
           <Footer />
         </UserStorage>

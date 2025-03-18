@@ -56,6 +56,14 @@ input {
   margin: 0 auto;
   padding: 0 1rem;
 }
+body .headerNav a.active {
+  box-shadow: 0px 0px 0px 3px #fea;
+  border-color: #fb1;
+  background-color: #fff;
+}
+body .headerNav a.active svg > * {
+  fill: #fb1;
+}
 .animeLeft {
   opacity: 0;
   transform: translate3d(-20px, 0, 0);

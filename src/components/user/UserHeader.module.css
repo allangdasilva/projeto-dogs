@@ -1,0 +1,7 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  position: relative;
+  margin-block: 1rem 2rem;
+}
