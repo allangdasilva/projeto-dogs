@@ -9,7 +9,7 @@ const Login = () => {
 
   React.useEffect(() => {
     if (login) {
-      navigate("/conta");
+      navigate("/account");
     }
   }, [login, navigate]);
   return (

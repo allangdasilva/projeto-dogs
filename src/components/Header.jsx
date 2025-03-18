@@ -14,7 +14,7 @@ const Header = () => {
             <DogSvg />
           </Link>
           {data ? (
-            <Link className={styles.login} to={"conta"}>
+            <Link className={styles.login} to={"account"}>
               {data.nome}
               <button onClick={userLogout}>Sair</button>
             </Link>

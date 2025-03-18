@@ -8,8 +8,10 @@ import LoginForm from "./components/login/LoginForm";
 import LoginCreate from "./components/login/LoginCreate";
 import LoginPasswordLost from "./components/login/LoginPasswordLost";
 import LoginPasswordReset from "./components/login/LoginPasswordReset";
+import Account from "./components/user/Account";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserStorage } from "./UserContext";
+import ProtectedRoute from "./components/helper/ProtectedRoute";
 
 const App = () => {
   return (
@@ -25,6 +27,14 @@ const App = () => {
               <Route path="lost" element={<LoginPasswordLost />} />
               <Route path="reset" element={<LoginPasswordReset />} />
             </Route>
+            <Route
+              path="account"
+              element={
+                <ProtectedRoute>
+                  <Account />
+                </ProtectedRoute>
+              }
+            ></Route>
           </Routes>
           <Footer />
         </UserStorage>
