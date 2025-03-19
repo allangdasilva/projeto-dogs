@@ -7,3 +7,8 @@
   margin-bottom: var(--padding-first);
   line-height: 1.2;
 }
+@media screen and (max-width: 64rem) {
+  .comments {
+    overflow-y: initial;
+  }
+}
