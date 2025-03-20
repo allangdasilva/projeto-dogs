@@ -7,6 +7,7 @@ import Button from "../forms/Button";
 import useForm from "../../hooks/useForm";
 import Error from "../helper/Error";
 import { UserContext } from "../../UserContext";
+import Head from "../helper/Head";
 
 const LoginForm = () => {
   const username = useForm();
@@ -23,6 +24,7 @@ const LoginForm = () => {
   return (
     <>
       <section className="animeLeft">
+        <Head title={"Login"} description={"Login"} />
         <h1 className="title">Login</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
           <Input
