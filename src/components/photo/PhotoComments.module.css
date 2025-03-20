@@ -3,6 +3,9 @@
   overflow-y: auto;
   word-break: break-all;
 }
+.single {
+  padding: 0;
+}
 .comments li {
   margin-bottom: var(--padding-first);
   line-height: 1.2;

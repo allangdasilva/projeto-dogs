@@ -10,6 +10,7 @@ import LoginPasswordLost from "./components/login/LoginPasswordLost";
 import LoginPasswordReset from "./components/login/LoginPasswordReset";
 import Account from "./components/user/Account";
 import Feed from "./components/feed/Feed";
+import Photo from "./components/photo/Photo";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserStorage } from "./UserContext";
 import ProtectedRoute from "./components/helper/ProtectedRoute";
@@ -42,6 +43,7 @@ const App = () => {
               <Route path="post" element={<UserPhotoPost />} />
               <Route path="stats" element={<UserStats />} />
             </Route>
+            <Route path="photo/:id" element={<Photo />} />
           </Routes>
           <Footer />
         </UserStorage>
