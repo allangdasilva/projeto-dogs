@@ -16,6 +16,7 @@ import { UserStorage } from "./UserContext";
 import ProtectedRoute from "./components/helper/ProtectedRoute";
 import UserPhotoPost from "./components/user/UserPhotoPost";
 import UserStats from "./components/user/UserStats";
+import UserProfile from "./components/user/UserProfile";
 
 const App = () => {
   return (
@@ -44,6 +45,7 @@ const App = () => {
               <Route path="stats" element={<UserStats />} />
             </Route>
             <Route path="photo/:id" element={<Photo />} />
+            <Route path="profile/:user" element={<UserProfile />} />
           </Routes>
           <Footer />
         </UserStorage>
