@@ -86,3 +86,6 @@ body .headerNav a.active svg > * {
 .AppMain {
   flex: 1;
 }
+.VictoryContainer {
+  height: initial !important;
+}
