@@ -10,7 +10,11 @@ const Header = () => {
     <>
       <header className={styles.header}>
         <nav className={`${styles.nav} container`}>
-          <Link className={styles.logo} to={"/"} aria-label="Dogs - Home">
+          <Link
+            className={styles.logo}
+            to={"/projeto-dogs"}
+            aria-label="Dogs - Home"
+          >
             <DogSvg />
           </Link>
           {data ? (
