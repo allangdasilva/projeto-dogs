@@ -22,36 +22,40 @@ import NotFound from "./components/NotFound";
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <UserStorage>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="login" element={<Login />}>
-              <Route path="" element={<LoginForm />} />
-              <Route path="create" element={<LoginCreate />} />
-              <Route path="lost" element={<LoginPasswordLost />} />
-              <Route path="reset" element={<LoginPasswordReset />} />
-            </Route>
-            <Route
-              path="account"
-              element={
-                <ProtectedRoute>
-                  <Account />
-                </ProtectedRoute>
-              }
-            >
-              <Route path="" element={<Feed />} />
-              <Route path="post" element={<UserPhotoPost />} />
-              <Route path="stats" element={<UserStats />} />
-            </Route>
-            <Route path="photo/:id" element={<Photo />} />
-            <Route path="profile/:user" element={<UserProfile />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Footer />
-        </UserStorage>
-      </BrowserRouter>
+      <div className="App">
+        <BrowserRouter>
+          <UserStorage>
+            <Header />
+            <main className="AppMain">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="login" element={<Login />}>
+                  <Route path="" element={<LoginForm />} />
+                  <Route path="create" element={<LoginCreate />} />
+                  <Route path="lost" element={<LoginPasswordLost />} />
+                  <Route path="reset" element={<LoginPasswordReset />} />
+                </Route>
+                <Route
+                  path="account"
+                  element={
+                    <ProtectedRoute>
+                      <Account />
+                    </ProtectedRoute>
+                  }
+                >
+                  <Route path="" element={<Feed />} />
+                  <Route path="post" element={<UserPhotoPost />} />
+                  <Route path="stats" element={<UserStats />} />
+                </Route>
+                <Route path="photo/:id" element={<Photo />} />
+                <Route path="profile/:user" element={<UserProfile />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+          </UserStorage>
+        </BrowserRouter>
+      </div>
     </>
   );
 };
