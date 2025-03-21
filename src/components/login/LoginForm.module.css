@@ -16,7 +16,7 @@
   }
 }
 .createWrapper {
-  margin-top: 4rem;
+  margin-block: 4rem 1rem;
 }
 .createWrapper p {
   margin-block: 2rem;
