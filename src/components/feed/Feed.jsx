@@ -2,12 +2,21 @@ import React from "react";
 import FeedModal from "./FeedModal";
 import FeedPhotos from "./FeedPhotos";
 import { useOutletContext } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loadNewPhotos, resetFeedState } from "../../redux/feed";
+import Loading from "../helper/Loading";
+import Error from "../helper/Error";
 
 const Feed = () => {
   const { user } = useOutletContext() || {};
   const [modalPhoto, setModalPhoto] = React.useState(null);
-  const [pages, setPages] = React.useState([1]);
-  const [infinite, setInfinite] = React.useState(true);
+  const { infinite, loading, list, error } = useSelector((state) => state.feed);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(resetFeedState());
+    dispatch(loadNewPhotos({ user, total: 6 }));
+  }, [dispatch, user]);
 
   React.useEffect(() => {
     let wait = false;
@@ -16,7 +25,7 @@ const Feed = () => {
         const scroll = window.scrollY;
         const height = document.body.offsetHeight - window.innerHeight;
         if (scroll > height * 0.8 && !wait) {
-          setPages((pages) => [...pages, pages.length + 1]);
+          dispatch(loadNewPhotos({ user, total: 6 }));
           wait = true;
           setTimeout(() => {
             wait = false;
@@ -31,23 +40,28 @@ const Feed = () => {
       window.removeEventListener("wheel", infiniteScroll);
       window.removeEventListener("scroll", infiniteScroll);
     };
-  }, [infinite]);
+  }, [infinite, dispatch, user]);
 
   return (
-    <>
+    <div>
       {modalPhoto && (
         <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
       )}
-      {pages.map((page) => (
-        <FeedPhotos
-          user={user}
-          page={page}
-          key={page}
-          setModalPhoto={setModalPhoto}
-          setInfinite={setInfinite}
-        />
-      ))}
-    </>
+      {list.length > 0 && <FeedPhotos setModalPhoto={setModalPhoto} />}
+      {loading && <Loading />}
+      {error && <Error error={error} />}
+      {!infinite && !user && (
+        <p
+          style={{
+            textAlign: "center",
+            padding: "2rem 0 4rem 0",
+            color: "#888",
+          }}
+        >
+          Não existem mais postagens.
+        </p>
+      )}
+    </div>
   );
 };
 
