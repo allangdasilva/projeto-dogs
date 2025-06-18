@@ -9,7 +9,7 @@ import Error from "../helper/Error";
 
 const Feed = () => {
   const { user } = useOutletContext() || {};
-  const [modalPhoto, setModalPhoto] = React.useState(null);
+
   const { infinite, loading, list, error } = useSelector((state) => state.feed);
   const dispatch = useDispatch();
 
@@ -44,10 +44,9 @@ const Feed = () => {
 
   return (
     <div>
-      {modalPhoto && (
-        <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
-      )}
-      {list.length > 0 && <FeedPhotos setModalPhoto={setModalPhoto} />}
+      <FeedModal />
+
+      {list.length > 0 && <FeedPhotos />}
       {loading && <Loading />}
       {error && <Error error={error} />}
       {!infinite && !user && (
