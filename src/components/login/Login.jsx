@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./Login.module.css";
 import { Outlet, useNavigate } from "react-router-dom";
-import { UserContext } from "../../UserContext";
+import { useSelector } from "react-redux";
 
 const Login = () => {
-  const { login } = React.useContext(UserContext);
+  const { data } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (login) {
+    if (data) {
       navigate("/account");
     }
-  }, [login, navigate]);
+  }, [data, navigate]);
   return (
     <>
       <section className={styles.login}>
