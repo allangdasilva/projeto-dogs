@@ -2,9 +2,10 @@ import React from "react";
 import styles from "./Login.module.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Loading from "../helper/Loading";
 
 const Login = () => {
-  const { data } = useSelector((state) => state.user);
+  const { data, loading } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -12,6 +13,7 @@ const Login = () => {
       navigate("/account");
     }
   }, [data, navigate]);
+  if (loading) return <Loading />;
   return (
     <>
       <section className={styles.login}>

@@ -1,19 +1,20 @@
 import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { UserContext } from "../../UserContext";
 import FeedSvg from "../../assets/feed.svg?react";
 import EstatisticasSvg from "../../assets/estatisticas.svg?react";
 import AdicionarSvg from "../../assets/adicionar.svg?react";
 import SairSvg from "../../assets/sair.svg?react";
 import styles from "./UserHeaderNav.module.css";
 import useMedia from "../../hooks/useMedia";
+import { useDispatch } from "react-redux";
+import { userLogout } from "../../redux/user";
 
 const UserHeaderNav = () => {
-  const { userLogout } = React.useContext(UserContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleLogout() {
-    userLogout();
+    dispatch(userLogout());
     navigate("/login");
   }
 
